@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:messages autoUpdate="true"/>
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Nome" for="nome"/>
+                <p:inputText id="nome" required="true" value="#{perfilUsuarioBean.nome}"/>
+               
+                <p:outputLabel value="Estado" for="estado"/>   
+                <p:selectOneMenu id="estado" value="#{perfilUsuarioBean.estado}" filter="true">
+                    <p:ajax  process="@this" listener="#{perfilUsuarioBean.atualizarCidades()}" update="cidade" />
+                    <f:selectItem itemLabel="Selecione"/>
+                    <f:selectItems value="#{perfilUsuarioBean.estados}" var="estado" itemLabel="#{estado}" itemValue="#{estado}"/>
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Cidade" for="cidade"/> 
+                <p:selectOneMenu id="cidade" value="#{perfilUsuarioBean.cidade}" filter="true">
+                    <f:selectItem itemLabel="Selecione"/>
+                    <f:selectItems value="#{perfilUsuarioBean.cidades}" var="cidade" itemLabel="#{cidade}" itemValue="#{cidade}"/>
+                </p:selectOneMenu>
+                
+                
+            </p:panelGrid>
+            <p:commandButton value="Atualizar" action="#{perfilUsuarioBean.atualizar()}"/>
+        </h:form>
+    </h:body>
+</html>
+

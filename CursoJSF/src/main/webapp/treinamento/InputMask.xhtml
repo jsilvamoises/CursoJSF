@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+          
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:messages autoUpdate="true"/>
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Nome" for="nome"/>
+                <p:inputText id="nome" required="true" value="#{selectOneMenu.nome}"/>
+                
+                <p:outputLabel value="Telefone" for="telefone"/>
+                <p:inputMask id="telefone" value="#{perfilUsuarioBean.telefone}" mask="(099) 99 9999-9999"/>
+                
+                <p:outputLabel value="Cpf" for="cpf"/>
+                <p:inputMask id="cpf" value="#{perfilUsuarioBean.cpf}" mask="999.999.999-99"/>
+                
+                <p:outputLabel value="Cep" for="cep"/>
+                <p:inputMask id="cep" value="#{perfilUsuarioBean.cep}" mask="99.999-999"/>
+            </p:panelGrid>
+            
+            <p:commandButton value="Atualizar" action="#{perfilUsuarioBean.atualizarImputMask()}"/>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,18 @@
+.ajax-status{
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    margin-left:  50%;
+    margin-top: 200px;
+}
+.disk{
+    width: 16px !important;
+    height: 16px !important;
+    background-image: url(../image/disk-icon-16.png)!important;
+    
+}
+
+h1{
+    color: red;
+}
+

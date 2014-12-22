@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="frm">
+            <p:messages autoUpdate="true"/>
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Nome" for="nome"/>
+                <p:inputText id="nome"/>
+                
+                <p:outputLabel value="Profissao" for="profissao" />
+                <p:selectOneListbox id="profissao" value="${selectOneListBox.profissao}" required="true">
+                    <f:selectItem itemLabel="Pedreiro" itemValue="Pedreiro"/>
+                    <f:selectItem itemLabel="Padeiro" itemValue="Padeiro"/>
+                    <f:selectItem itemLabel="Marceneiro" itemValue="Marceneiro"/>
+                    <f:selectItem itemLabel="Juiz" itemValue="Juix"/>
+                    <f:selectItem itemLabel="Artista" itemValue="Artista"/> 
+                </p:selectOneListbox>
+                
+               <p:outputLabel value="Interesse" for="interesse" />
+               <p:selectOneListbox id="interesse" value="#{selectOneListBox.interesse}" converter="interesse" var="i" style="width: 300px">
+                   <f:selectItems value="#{selectOneListBox.interesses}" var="interesse" itemLabel="#{interesse.descricao}" 
+                                  itemValue="#{interesse}"  />
+                   <p:column>
+                       <h:graphicImage library="image" name="${i.icon}.png"/>
+                   </p:column>
+                   
+                   <p:column>
+                       <h:outputText value="#{i.descricao}"/>
+                   </p:column>
+               </p:selectOneListbox>
+            </p:panelGrid>
+             <p:commandButton value="Atualizar" action="#{selectOneListBox.atualizar()}" update="@form" />
+        </h:form>
+    </h:body>
+</html>
+
