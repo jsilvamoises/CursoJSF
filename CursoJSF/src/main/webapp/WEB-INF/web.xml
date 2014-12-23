@@ -6,7 +6,7 @@
     </context-param>
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>blitzer</param-value>
+        <param-value>south-street</param-value>
     </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
@@ -15,7 +15,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>/jsm/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -23,6 +23,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
+        <welcome-file>faces/treinamento/home.xhtml</welcome-file>
         <welcome-file>faces/treinamento/panelgrid.xhtml</welcome-file>
     </welcome-file-list>
     <resource-ref>

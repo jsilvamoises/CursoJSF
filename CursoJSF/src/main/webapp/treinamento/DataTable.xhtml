@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="frmFuncionarioTbl">
+            <p:dataTable value="#{funcionarioBean.listaFuncionario}" var="funcionario" liveScroll="true" scrollRows="20" scrollable="true" scrollHeight="700">
+                <p:column headerText="Matricula" sortBy="#{funcionario.matricula}" filterBy="#{funcionario.matricula}">
+                    <h:outputText value="#{funcionario.matricula}" />
+                </p:column>
+                <p:column headerText="Nome" sortBy="#{funcionario.nome}" >
+                    <h:outputText value="#{funcionario.nome}"/>
+                </p:column>
+                <p:column headerText="Salario" sortBy="#{funcionario.salario}" >
+                    <h:outputText value="#{funcionario.salario}" />
+                </p:column>
+                
+                <p:column headerText="Data admissao" sortBy="#{funcionario.salario}"  footerText="Valor total R$ #{funcionarioBean.somaSalario}">
+                    <h:outputText value="#{funcionario.salario}" />
+                </p:column>
+
+            </p:dataTable>
+
+        </h:form>
+
+    </h:body>
+</html>
+

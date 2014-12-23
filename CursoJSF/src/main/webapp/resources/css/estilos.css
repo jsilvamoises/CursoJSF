@@ -1,3 +1,4 @@
+@charset "utf-8";
 .ajax-status{
     width: 35px;
     height: 35px;
@@ -14,5 +15,38 @@
 
 h1{
     color: red;
+}
+#relogio{
+    text-align: right;
+    margin-right:  20px;
+}
+#bottom{
+    padding: 100px:   
+    border: 10px;
+    border-color: #D20005;
+}
+body{
+    padding: 10px:
+    font-size: 12px;
+    font-family: Arial, Helvetica,sans-serif;
+    background-color: beige;
+    
+}
+footer{
+    padding: 0px 8px;
+}
+#divLogin{
+    margin: auto;
+    width: 320px;
+    margin-top: 150px;
+    border-color: darkgreen;
+    border: 1px;
+}
+#frmLogin{
+    padding: 10px;
+    background-color: beige;
+    border-radius: 8px;
+    border: 1px solid #D20005;
+    box-shadow: 5px 5px 5px beige;
 }
 
