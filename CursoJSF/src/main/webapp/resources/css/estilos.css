@@ -50,3 +50,15 @@ footer{
     box-shadow: 5px 5px 5px beige;
 }
 
+.frmGrande{
+    padding: 10px;
+    background-color: beige;
+    border-radius: 8px;
+    border: 1px solid #D20005;
+    box-shadow: 5px 5px 5px beige;
+}
+.rotulo{
+    font-size: x-large;
+    text-align: right;
+    width: 180px;
+}

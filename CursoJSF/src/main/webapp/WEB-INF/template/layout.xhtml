@@ -8,25 +8,29 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/estilos.css"/>
-<!--        <h:outputStylesheet name="./css/cssLayout.css"/>-->
+        <!--        <h:outputStylesheet name="./css/cssLayout.css"/>-->
         <title><ui:insert name="titulo">Template</ui:insert></title>
     </h:head>
 
     <h:body>
+        <p:ajaxStatus onstart="PF('status').show()" oncomplete="PF('status').hide()"/>
+        <p:dialog widgetVar="status" modal="true" closable="false">
+            Aguarde por favor, afinal você nasceu de 9 meses.
+        </p:dialog>
 
         <div id="top">
             <ui:include src="../template/Menu.xhtml"/>
-            
+
         </div>
 
         <div id="content" class="center_content">           
             <ui:insert name="content">
-                
+
             </ui:insert>
         </div>
 
         <div id="bottom">
-             <p:separator/>
+            <p:separator/>
             <ui:include src="../template/rodape.xhtml"/>
         </div>
 
