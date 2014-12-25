@@ -19,7 +19,25 @@
 
                             <p:menubar autoDisplay="true" >
 
-                                <p:submenu label="Cadastro">
+                                <p:submenu label="Cadastro" icon="ui-icon-folder-open">
+                                    <p:menuitem value="Pessoas" icon="ui-icon-person"/>
+                                    <p:menuitem value="Usuarios" icon="ui-icon-key"/>
+                                    <p:separator/>
+                                    <p:menuitem value="Produtos" outcome="/produtos/CadastroProduto"/>
+                                    <p:menuitem value="Grupos de Produtos"/>
+                                    <p:menuitem value="Departamentos"/>
+                                </p:submenu>
+
+                                <p:submenu label="Operacional" icon="ui-icon-gear">
+                                    <p:menuitem value="Novo Pedido" />
+                                    <p:menuitem value="Usuarios"/>
+                                    <p:separator/>
+                                    <p:menuitem value="Produtos"/>
+                                    <p:menuitem value="Grupos de Produtos"/>
+                                    <p:menuitem value="Departamentos"/>
+                                </p:submenu>
+
+                                <p:submenu label="Relatorios" icon="ui-icon-document">
                                     <p:menuitem value="Pessoas"/>
                                     <p:menuitem value="Usuarios"/>
                                     <p:separator/>
@@ -28,7 +46,7 @@
                                     <p:menuitem value="Departamentos"/>
                                 </p:submenu>
 
-                                <p:submenu label="Operacional">
+                                <p:submenu label="Financeiro" icon="ui-icon-cart">
                                     <p:menuitem value="Pessoas"/>
                                     <p:menuitem value="Usuarios"/>
                                     <p:separator/>
@@ -36,24 +54,16 @@
                                     <p:menuitem value="Grupos de Produtos"/>
                                     <p:menuitem value="Departamentos"/>
                                 </p:submenu>
-
-                                <p:submenu label="Relatorios">
-                                    <p:menuitem value="Pessoas"/>
-                                    <p:menuitem value="Usuarios"/>
-                                    <p:separator/>
-                                    <p:menuitem value="Produtos"/>
-                                    <p:menuitem value="Grupos de Produtos"/>
-                                    <p:menuitem value="Departamentos"/>
+                                
+                                <p:submenu label="Configurações" icon="ui-icon-lightbulb">
+                                    <p:menuitem value="Redefinir senha"/>
+                                    <p:menuitem value="Criar Menu personalizado"/>                                    
                                 </p:submenu>
-
-                                <p:submenu label="Relatorios">
-                                    <p:menuitem value="Pessoas"/>
-                                    <p:menuitem value="Usuarios"/>
-                                    <p:separator/>
-                                    <p:menuitem value="Produtos"/>
-                                    <p:menuitem value="Grupos de Produtos"/>
-                                    <p:menuitem value="Departamentos"/>
-                                </p:submenu>
+                                
+                                <p:menuitem value="Logout" icon="ui-icon-power"/>
+                                <p:menuitem value="Home" icon="ui-icon-home"/>
+                                
+                               
                             </p:menubar>
                         </h:panelGrid>
 

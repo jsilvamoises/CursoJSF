@@ -16,12 +16,12 @@
             <h:form id="frmCadastroProduto" class="frmGrande">
                 <p:toolbar>
                     <p:toolbarGroup>
-                        <p:button value="Nome" outcome="/produtos/CadastroProduto"/>
-                        <p:commandButton value="Salvar" />
+                        <p:button value="Novo" icon="ui-icon-circle-plus" outcome="/produtos/CadastroProduto"/>
+                        <p:commandButton value="Salvar" icon="ui-icon-disk" />
                     </p:toolbarGroup>
                     
                     <p:toolbarGroup align="right">
-                        <p:commandButton value="Pesquisar"/>
+                        <p:button value="Pesquisar" outcome="/produtos/ConsultaProduto" icon="ui-icon-search"/>
                     </p:toolbarGroup>
                 </p:toolbar>
                 
@@ -42,8 +42,8 @@
                         <f:selectItem itemLabel="Selecione"/>
                     </p:selectOneMenu>
                     
-                    <p:outputLabel value="Valor Unitário" for="vlrUnitario"/>
-                    <p:inputText id="vlrUnitario" size="10"/>
+                    <p:outputLabel value="Valor Unitário" for="vlrUnitario" />
+                    <p:inputText id="vlrUnitario" size="10" class="currency"/>
                     
                     <p:outputLabel value="Estoque" for="estoque"/>
                     <p:inputText id="estoque" size="10"/>

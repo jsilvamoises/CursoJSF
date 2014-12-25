@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <ui:include src="../pedido/InclusaoDeItens.xhtml"/>
+            <p:dataTable value="#{usuarioBean.lista}" var="usuario" scrollHeight="250" scrollable="true">
+
+                <p:column headerText="SKU" width="150">
+                    moi
+                </p:column>
+
+                <p:column headerText="Produto" >
+
+                </p:column>
+
+                <p:column headerText="Valor Unitário" width="120">
+
+                </p:column>
+
+                <p:column headerText="Quantidade" width="120">
+
+                </p:column>
+
+                <p:column headerText="Estoque" width="120" >
+
+                </p:column>
+
+                <p:column headerText="Valor Total" width="120">
+
+                </p:column>
+
+                <p:columnGroup type="footer" >
+                    <p:row>
+                        <p:column  footerText=" Subtotal" style="width: 80%"/>
+                        <p:column footerText=" R$ 1,36" >
+                        </p:column>
+                    </p:row>
+                </p:columnGroup>
+            </p:dataTable>
+
+        </h:form>
+    </h:body>
+</html>
+

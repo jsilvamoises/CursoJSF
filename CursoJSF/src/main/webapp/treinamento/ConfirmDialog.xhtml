@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="estilos.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="frm">
+            <!--<p:messages autoUpdate="true"/>-->
+            <p:growl autoUpdate="true"/>
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Incluir produto" oncomplete="PF('incluir').show(); return false;"/>
+                </p:toolbarGroup>
+            </p:toolbar>
+            <p:dataTable id="table" value="#{simProdutosBean.produtos}" var="produto">
+                <p:column headerText="Produto">
+                    <h:outputText value="#{produto}"/>
+                </p:column>
+                
+                <p:column width="40">
+                    <p:commandButton icon="ui-icon-trash" oncomplete="PF('confirExclude').show();" styleClass="mini-btn">
+                        <f:setPropertyActionListener target="#{simProdutosBean.produtoSelecionado}" value="#{produto}"/>
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+            
+            <p:confirmDialog header="Exclusao de produto" message="Realmente deseja excluir o Produto  ?" widgetVar="confirExclude">
+                <p:commandButton value="Sim" update="table" oncomplete="PF('confirExclude').hide()" action="#{simProdutosBean.removerProduto}"/>
+                <p:commandButton value="Não" onclick="PF('confirExclude').hide(); return false"/>
+            </p:confirmDialog>
+            
+            
+            <p:dialog widgetVar="incluir" header="Inclusão de produtos" modal="true" showEffect="fade" hideEffect="explode">
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Nome" for="nome"/>
+                    <p:inputText id="nome" value="#{simProdutosBean.novoProduto}"/>
+                </p:panelGrid>
+                <p:commandButton  value="Incluir" update="table, nome" action="#{simProdutosBean.adcionarProduto}" />
+            </p:dialog>
+        </h:form>
+
+    </h:body>
+</html>
+

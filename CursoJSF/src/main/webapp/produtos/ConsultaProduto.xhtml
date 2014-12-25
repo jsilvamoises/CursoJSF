@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/template/layout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="titulo">
+        Consulta Produtos
+    </ui:define>
+
+    <ui:define name="content">
+        <div>
+            <h1>Consulta Produtos</h1>
+            <h:form id="frmCadastroProduto" class="frmGrande">
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:button value="Pesquisar" icon="ui-icon-circle-plus" />
+
+                    </p:toolbarGroup>
+
+                    <p:toolbarGroup align="right">
+                        <p:button value="Novo" outcome="/produtos/CadastroProduto" icon="ui-icon-search"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+
+                <h:panelGrid columns="2" style="margin-top: 20px; width: 100%; border: 2px solid #009900; border-radius: 8px;" columnClasses="rotulo, campo">
+                    <p:outputLabel value="SKU" for="sku"/>
+                    <p:inputText id="sku"/>
+
+                    <p:outputLabel value="Nome" for="nome"/>
+                    <p:inputText id="nome" size="50"/> 
+                </h:panelGrid>
+
+                <p:dataTable scrollable="true" scrollHeight="400"  style="margin-top: 15px;" value="#{usuarioBean.lista}" var="usuario">
+                    <p:column headerText="SKU" width="100">
+                        <h:outputText value="123"/>
+                    </p:column>
+
+                    <p:column headerText="Nome">
+                        <h:outputText value="MOISES JUVENAL DA SILVA"/>
+                    </p:column>
+
+                    <p:column headerText="Categoria">
+                        <h:outputText value="DOCES E BALAS"/>
+                    </p:column>
+
+                    <p:column headerText="Valor Unitário" width="200">
+                        <h:outputText value="123,45"/>
+                    </p:column>
+
+                    <p:column headerText="Estoque" width="100">
+                        <h:outputText value="5" />
+                    </p:column>
+
+                    <p:column headerText="Ação" width="100">
+                        <h:panelGroup>
+                            <p:commandButton  icon="ui-icon-pencil" title="Editar" styleClass="mini-btn" />
+                            <p:commandButton  icon="ui-icon-trash" styleClass="mini-btn" oncomplete="PF('confirmaExclusaoProduto').show(); return false;"/>
+                        </h:panelGroup>
+                    </p:column>
+                </p:dataTable>
+                
+                <p:confirmDialog widgetVar="confirmaExclusaoProduto" header="Exclusão de produto"  message="Realmente deseja excluir o produto?">
+                    <p:commandButton value="Não" icon="ui-icon-close" oncomplete="PF('confirmaExclusaoProduto').hide(); return false;"/>
+                    <p:commandButton value="Sim" icon="ui-icon-check" oncomplete="PF('confirmaExclusaoProduto').hide();"/>
+                </p:confirmDialog>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
