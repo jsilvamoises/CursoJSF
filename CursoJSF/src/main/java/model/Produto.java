@@ -14,7 +14,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -42,7 +46,8 @@ public class Produto implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
+    @NotBlank
     @Column(name = "sku", nullable = false, length = 80)
     public String getSku() {
         return sku;
@@ -52,6 +57,8 @@ public class Produto implements Serializable {
         this.sku = sku;
     }
 
+    @NotBlank
+    @Size(max = 80)
     @Column(name = "nome", nullable = false, length = 90)
     public String getNome() {
         return nome;
@@ -61,6 +68,8 @@ public class Produto implements Serializable {
         this.nome = nome;
     }
 
+    @NotNull
+    @Min(value = 0)
     @Column(name = "valor_unitario", nullable = false, precision = 10, scale = 2)
     public float getValorUnitario() {
         return valorUnitario;
@@ -69,7 +78,10 @@ public class Produto implements Serializable {
     public void setValorUnitario(float valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
+
     @NotNull
+    @Min(value = 0)
+    @Max(value = 9999)
     @Column(name = "quantidade_estoque", nullable = false, length = 6)
     public Integer getQuantidadeEstoque() {
         return quantidadeEstoque;

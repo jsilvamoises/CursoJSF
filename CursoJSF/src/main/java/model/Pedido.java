@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +26,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -32,6 +34,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "pedido")
+
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,16 +42,16 @@ public class Pedido implements Serializable {
     private Date dataCriacao;
     private String observacao;
     private Date dataEntrega;
-    private float valorFrete;
-    private float valorDesconto;
-    private float valorTotal;
+    private BigDecimal valorFrete;
+    private BigDecimal valorDesconto;
+    private BigDecimal valorTotal;
     private Cliente cliente;
     private EnderecoEntrega enderecoEntrega;
     private Usuario vendedor;
     private FormaPagamento formaPagamento;
     private StatusPedido statusPedido;
     private List<ItemPedido> itensPedido = new ArrayList<>();
-
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_criacao")
     public Date getDataCriacao() {
@@ -67,7 +70,7 @@ public class Pedido implements Serializable {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-
+    @NotNull
     @Temporal(TemporalType.DATE)
     @Column(name = "data_entrega")
     public Date getDataEntrega() {
@@ -77,34 +80,34 @@ public class Pedido implements Serializable {
     public void setDataEntrega(Date dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
-
+    @NotNull
     @Column(name = "valor_frete")
-    public float getValorFrete() {
+    public BigDecimal getValorFrete() {
         return valorFrete;
     }
 
-    public void setValorFrete(float valorFrete) {
+    public void setValorFrete(BigDecimal valorFrete) {
         this.valorFrete = valorFrete;
     }
-
-    @Column(name = "valor_desconto", nullable = false, precision = 10, scale = 2)
-    public float getValorDesconto() {
+    @NotNull
+    @Column(name = "valor_desconto", nullable = false)
+    public BigDecimal getValorDesconto() {
         return valorDesconto;
     }
 
-    public void setValorDesconto(float valorDesconto) {
+    public void setValorDesconto(BigDecimal valorDesconto) {
         this.valorDesconto = valorDesconto;
     }
-
+    @NotNull
     @Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
-    public float getValorTotal() {
+    public BigDecimal getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(float valorTotal) {
+    public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
     }
-
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     public Cliente getCliente() {
@@ -114,7 +117,7 @@ public class Pedido implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "vendedor_id", nullable = false)
     public Usuario getUsuario() {
@@ -124,7 +127,8 @@ public class Pedido implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.vendedor = usuario;
     }
-
+    @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "forma_pagamento", nullable = false)
     public FormaPagamento getFormaPagamento() {
         return formaPagamento;
@@ -133,7 +137,7 @@ public class Pedido implements Serializable {
     public void setFormaPagamento(FormaPagamento formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
-
+    @NotNull
     @Column(name = "status_pedido", nullable = false)
     @Enumerated(EnumType.STRING)
     public StatusPedido getStatusPedido() {

@@ -5,8 +5,15 @@
  */
 package bean;
 
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import model.Categoria;
 import model.Produto;
 
 /**
@@ -17,9 +24,19 @@ import model.Produto;
 @RequestScoped
 public class ProdutoBean {
     private Produto produto;
+    @Inject
+    private EntityManager manager;
+    
+    private List<Categoria> categorias;
 
     public ProdutoBean() {
         produto = new Produto();
+    }
+    
+    public void init(){
+        
+        categorias = manager.createQuery("SELECT C FROM Categoria C", Categoria.class).getResultList();
+       
     }
     
     public void salvar(){
@@ -32,6 +49,14 @@ public class ProdutoBean {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
     }
     
     

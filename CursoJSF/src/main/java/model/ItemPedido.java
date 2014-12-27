@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
+
 
 /**
  *
@@ -39,6 +42,7 @@ public class ItemPedido implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
+    @NotNull
     @Column( nullable = false)
     public int getQuantidade() {
         return quantidade;
@@ -47,6 +51,7 @@ public class ItemPedido implements Serializable{
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+    @NotBlank
     @Column(name = "valor_unitario", precision = 10, scale = 2)
     public float getValorUnitario() {
         return valorUnitario;
@@ -55,6 +60,7 @@ public class ItemPedido implements Serializable{
     public void setValorUnitario(float valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "produto_id", nullable = false)
     public Produto getProduto() {
@@ -64,6 +70,7 @@ public class ItemPedido implements Serializable{
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "pedido_id", nullable = false)
     public Pedido getPedido() {

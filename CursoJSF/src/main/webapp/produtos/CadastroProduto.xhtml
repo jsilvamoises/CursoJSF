@@ -12,6 +12,9 @@
     </ui:define>
 
     <ui:define name="content">
+        <f:metadata>
+            <f:event listener="#{produtoBean.init()}" type="preRenderView"/>
+        </f:metadata>
         <p:growl autoUpdate="true" life="3000"/>
         <div>
             <h1>Cadastro de Produtos</h1>
@@ -30,14 +33,15 @@
                 
                 <p:panelGrid columns="2" style="margin-top: 20px; width: 100%" columnClasses="rotulo, campo">
                     <p:outputLabel value="SKU" for="sku"/>
-                    <p:inputText id="sku"/>
+                    <p:inputText id="sku" value="#{produtoBean.produto.sku}"/>
                     
                     <p:outputLabel value="Nome" for="nome"/>
-                    <p:inputText id="nome" size="50"/>
+                    <p:inputText id="nome" size="50" value="#{produtoBean.produto.nome}" maxlength="80"/>
                     
                     <p:outputLabel value="Categoria" for="categoria"/>
                     <p:selectOneMenu id="categoria">
                         <f:selectItem itemLabel="Selecione"/>
+                        <f:selectItems value="#{produtoBean.categorias}" var="categoria" itemValue="#{categoria}" itemLabel="#{categoria.descricao}"/>
                     </p:selectOneMenu>
                     
                     <p:outputLabel value="Sub categoria" for="subCategoria"/>
@@ -46,7 +50,9 @@
                     </p:selectOneMenu>
                     
                     <p:outputLabel value="Valor Unitário" for="vlrUnitario" />
-                    <p:inputText id="vlrUnitario" size="10" class="currency"/>
+                    <p:inputText id="vlrUnitario" size="10" class="currency" value="#{produtoBean.produto.valorUnitario}">
+                        <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
+                    </p:inputText>
                     
                     <p:outputLabel value="Estoque" for="estoque"/>
                     <p:inputText id="estoque" size="10" value="#{produtoBean.produto.quantidadeEstoque}"/>
