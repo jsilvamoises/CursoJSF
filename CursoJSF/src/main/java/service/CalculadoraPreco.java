@@ -5,11 +5,17 @@
  */
 package service;
 
+import javax.annotation.PostConstruct;
+
 /**
  *
  * @author Moises
  */
 public class CalculadoraPreco {
+    @PostConstruct
+    public void init(){
+        System.out.println("Inicializando Calculadora preco");
+    }
     public double calcularPreco(int quantidade, double preco){
         return quantidade*preco;
     }

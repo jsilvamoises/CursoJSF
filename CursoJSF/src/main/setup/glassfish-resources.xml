@@ -10,4 +10,5 @@
         <property name="driverClass" value="org.hsqldb.jdbc.JDBCDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="mm" object-type="user" pool-name="jdbc_hsqldb_hsql_localhost_polishop_polishop_saPool"/>
+    <jdbc-resource enabled="true" jndi-name="NovoHSQL" object-type="user" pool-name="jdbc_hsqldb_hsql_localhost_polishop_polishop_saPool"/>
 </resources>

@@ -6,7 +6,8 @@
 package controller;
 
 import java.io.Serializable;
-import javax.enterprise.context.ApplicationScoped;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import service.CalculadoraPreco;
@@ -16,13 +17,19 @@ import service.CalculadoraPreco;
  * @author Moises
  */
 @Named("meuBean")
+@Dependent
 //@RequestScoped
 //@SessionScoped
-@ApplicationScoped
+//@ApplicationScoped
 public class PrecoProdutoBean implements Serializable{
     @Inject
     private CalculadoraPreco calculadoraPreco;
+    @PostConstruct
+    public void init(){
+        System.out.println("Inicializando preco produto bean");
+    }
     public double getPreco(){
+        
        
         return calculadoraPreco.calcularPreco(12, 44.55);
     }

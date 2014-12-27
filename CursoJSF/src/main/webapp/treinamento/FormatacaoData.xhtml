@@ -8,8 +8,13 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:inputTextarea style="width: 100%; height: 80px" rows="5" autoResize="true"/>
+            
+            <p:calendar value="#{data.dataInformada}" pattern="dd/MM/yyyy" />
+            <p:commandButton value="Enviar" actionListener="#{data.enviar()}" update="@form" />
+            <br/>
+             <h:outputText id="saida" value="jjj : #{data.dataFormatada}" />
         </h:form>
+
     </h:body>
 </html>
 

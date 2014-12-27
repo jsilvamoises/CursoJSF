@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings version="2.0" persistenceUnitName="CursoJSF_PU" id="_14196166690941" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:ns4="http://nbmodeler.java.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:package>model</jpa:package>
+    <jpa:schema>polishop</jpa:schema>
+    <jpa:entity class="Cliente" visibile="true" minimized="false" id="_1419617322804">
+        <jpa:named-query name="SELECT_ALL">
+            <jpa:query>SELECT C FROM Cliente C</jpa:query>
+            <jpa:lock-mode>OPTIMISTIC</jpa:lock-mode>
+            <jpa:hint name="SELECT_ALL" value="ALL"/>
+        </jpa:named-query>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_141961733307321">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nome" attribute-type="String" visibile="true" id="_141961861357030">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="email" attribute-type="String" visibile="true" id="_141961861480031">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="cpf" attribute-type="String" visibile="true" id="_141961863056132">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="tipoPessoa" attribute-type="enums.TipoPessoa" visibile="true" id="_141961871254533">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Pedido" visibile="true" minimized="false" id="_1419619727474">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_141961973653639">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="dataCriacao" attribute-type="java.util.Date" visibile="true" id="_141961973805940">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="observacao" attribute-type="String" visibile="true" id="_141961973835241">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="dataEntrega" attribute-type="java.util.Date" visibile="true" id="_141961973858742">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="valorFrete" attribute-type="float" visibile="true" id="_141961973877743">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="valorDesconto" attribute-type="float" visibile="true" id="_141961973879244">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="valorTotal" attribute-type="float" visibile="true" id="_141961973899245">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="ItemPedido" visibile="true" minimized="false" id="_1419619885985">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_141961989636547">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="quantidade" attribute-type="String" visibile="true" id="_141961990210448">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="valorUnitario" attribute-type="String" visibile="true" id="_141961990232749">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Produto" visibile="true" minimized="false" id="_1419619921046">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_141961992711951">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Grupo" visibile="true" minimized="false" id="_1419620016162">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_141962002359054">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Usuario" visibile="true" minimized="false" id="_1419620041791">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_141962004824056">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Endereco" visibile="true" minimized="false" id="_1419621642127">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_141962164809114">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_14196166691042">
+        <plane elementRef="_14196166690941" id="_14196166691043_p">
+            <shape elementRef="_1419617322804" id="_1419617322804_gui">
+                <Bounds x="802.0" y="198.0" width="135.0" height="155.0"/>
+            </shape>
+            <shape elementRef="_1419619727474" id="_1419619727474_gui">
+                <Bounds x="638.0" y="276.0" width="135.0" height="197.0"/>
+            </shape>
+            <shape elementRef="_1419619885985" id="_1419619885985_gui">
+                <Bounds x="32.0" y="32.0" width="160.0" height="113.0"/>
+            </shape>
+            <shape elementRef="_1419619921046" id="_1419619921046_gui">
+                <Bounds x="320.0" y="32.0" width="141.0" height="58.0"/>
+            </shape>
+            <shape elementRef="_1419620016162" id="_1419620016162_gui">
+                <Bounds x="589.0" y="32.0" width="130.0" height="58.0"/>
+            </shape>
+            <shape elementRef="_1419620041791" id="_1419620041791_gui">
+                <Bounds x="847.0" y="32.0" width="140.0" height="58.0"/>
+            </shape>
+            <shape elementRef="_1419621642127" id="_1419621642127_gui">
+                <Bounds x="1115.0" y="32.0" width="150.0" height="58.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
