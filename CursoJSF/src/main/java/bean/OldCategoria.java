@@ -12,15 +12,15 @@ import java.io.Serializable;
  * @author Moises
  */
 
-public class Interesse implements Serializable{
+public class OldCategoria implements Serializable{
     private static final long serialVersionUID = 1L;
     private String descricao;
     private String icon;
 
-    public Interesse() {
+    public OldCategoria() {
     }
 
-    public Interesse(String descricao, String icon) {
+    public OldCategoria(String descricao, String icon) {
         this.descricao = descricao;
         this.icon = icon;
     }

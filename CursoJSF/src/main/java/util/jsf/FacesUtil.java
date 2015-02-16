@@ -33,5 +33,13 @@ public class FacesUtil {
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, message, message));
     }
+    
+    public static boolean isNotPostback() {
+        return !isPostBack();
+    }
+    
+    public static boolean isPostBack() {
+        return FacesContext.getCurrentInstance().isPostback();
+    }
 
 }

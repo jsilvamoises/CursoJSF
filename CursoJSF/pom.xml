@@ -16,6 +16,12 @@
     </properties>
     
     <dependencies>
+        <!--DEPENDENCIA PARA LEITURA DE FEED-->
+        <dependency>
+		<groupId>net.java.dev.rome</groupId>
+		<artifactId>rome</artifactId>
+		<version>1.0.0</version>
+	</dependency>
         <!--HIBERNATE VALIDATOR-->
         <dependency>
             <groupId>org.hibernate</groupId>

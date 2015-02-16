@@ -7,6 +7,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -20,20 +21,28 @@ import util.hibernate.HibernateUtil;
  */
 public class TESTE {
 
+    @Inject
+    EntityManager manager;
+    
+    @Inject
+    Categoria categoria;
+
+    @Inject
+    Categoria categoriaPai;
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         new TESTE().entityM();
         System.exit(0);
-        
+
     }
-    
-    
-    public void hibernate(){
+
+    public void hibernate() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.getTransaction().begin();
-       List<Endereco> enderecos = new ArrayList<>();
+        List<Endereco> enderecos = new ArrayList<>();
         try {
             Cliente c = new Cliente();
             c.setCpf("215.049.798-00");
@@ -41,7 +50,7 @@ public class TESTE {
             //c.setEnderecos(null);
             c.setNome("MOISES JUVENAL DA SILVA");
             c.setTipoPessoa(TipoPessoa.JURIDICA);
-            
+
             Endereco endereco = new Endereco();
             endereco.setCep("13.221-301");
             endereco.setCidade("JUNDIAI");
@@ -51,7 +60,7 @@ public class TESTE {
             endereco.setNumero("158");
             endereco.setUf("NG");
             enderecos.add(endereco);
-            
+
             endereco = new Endereco();
             endereco.setCep("13.221-300");
             endereco.setCidade("VARZEA PAULISTA");
@@ -60,63 +69,87 @@ public class TESTE {
             endereco.setLogradouro("RUA BERTIOGA");
             endereco.setNumero("49");
             endereco.setUf("SP");
-            
+
             enderecos.add(endereco);
-            c.setEnderecos(enderecos);               
-            
-            
+            c.setEnderecos(enderecos);
+
             session.persist(c);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         }
     }
-    
-     public void entityM(){
-         EntityManagerFactory factory = Persistence.createEntityManagerFactory("PedidoPU");
-         EntityManager manager = factory.createEntityManager();
-         
-         EntityTransaction transaction = manager.getTransaction();
-         transaction.begin();
-         
-          List<Endereco> enderecos = new ArrayList<>();
-        try {
-             Cliente c = new Cliente();
-            c.setCpf("215.049.798-00");
-            c.setEmail("jsilva.moises@gmail.com");
-            //c.setEnderecos(null);
-            c.setNome("MOISES JUVENAL DA SILVA");
-            c.setTipoPessoa(TipoPessoa.JURIDICA);
-            
-            Endereco endereco = new Endereco();
-            endereco.setCep("13.221-301");
-            endereco.setCidade("JUNDIAI");
-            endereco.setCliente(c);
-            endereco.setComplemento("CASA");
-            endereco.setLogradouro("RUA MARIANA");
-            endereco.setNumero("158");
-            endereco.setUf("NG");
-            enderecos.add(endereco);
-            
-            endereco = new Endereco();
-            endereco.setCep("13.221-300");
-            endereco.setCidade("VARZEA PAULISTA");
-            endereco.setCliente(c);
-            endereco.setComplemento("CADA");
-            endereco.setLogradouro("RUA BERTIOGA");
-            endereco.setNumero("49");
-            endereco.setUf("SP");
-            
-            enderecos.add(endereco);
-            
-            c.setEnderecos(enderecos);  
-            
-            
-            manager.persist(c);
-            transaction.commit();
-        } catch (Exception e) {
-           transaction.rollback();
-        }
+
+    public void entityM() {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("PedidoPU");
+        EntityManager manager = factory.createEntityManager();
+
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+        
+//        categoria = new Categoria();
+//        
+//        
+//        System.out.println("Categoria pai "+categoriaPai);
+//        
+//        categoria.setDescricao("INFORMATICA");
+//        categoriaPai = manager.find(Categoria.class, 1L);
+//        categoria.setCategoriaPai(categoriaPai);
+//        manager.persist(categoria);
+        transaction.commit();
+
+//        List<Endereco> enderecos = new ArrayList<>();
+//        try {
+//            Cliente c = new Cliente();
+//            c.setCpf("215.049.798-00");
+//            c.setEmail("jsilva.moises@gmail.com");
+//            //c.setEnderecos(null);
+//            c.setNome("MOISES JUVENAL DA SILVA");
+//            c.setTipoPessoa(TipoPessoa.JURIDICA);
+//
+//            Endereco endereco = new Endereco();
+//            endereco.setCep("13.221-301");
+//            endereco.setCidade("JUNDIAI");
+//            endereco.setCliente(c);
+//            endereco.setComplemento("CASA");
+//            endereco.setLogradouro("RUA MARIANA");
+//            endereco.setNumero("158");
+//            endereco.setUf("NG");
+//            enderecos.add(endereco);
+//
+//            endereco = new Endereco();
+//            endereco.setCep("13.221-300");
+//            endereco.setCidade("VARZEA PAULISTA");
+//            endereco.setCliente(c);
+//            endereco.setComplemento("CADA");
+//            endereco.setLogradouro("RUA BERTIOGA");
+//            endereco.setNumero("49");
+//            endereco.setUf("SP");
+//
+//            enderecos.add(endereco);
+//
+//            c.setEnderecos(enderecos);
+//
+//            manager.persist(c);
+//            transaction.commit();
+//        } catch (Exception e) {
+//            transaction.rollback();
+//        }
     }
-    
+
+    public void insertCategori() {
+       EntityTransaction t = manager.getTransaction();
+        t.begin();
+        Pedido p = new Pedido();
+        Cliente c = new Cliente();
+        c.setId(1l);
+        p.setCliente(null);
+//        categoriaPai = manager.find(Categoria.class, 1L);
+//        categoria.setCategoriaPai(categoriaPai);
+//        categoria.setDescricao("CATEGORIA FILHA");
+//
+//        manager.merge(categoria);
+        t.commit();
+    }
+
 }

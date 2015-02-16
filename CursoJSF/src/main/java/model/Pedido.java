@@ -6,7 +6,6 @@
 package model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,9 +41,9 @@ public class Pedido implements Serializable {
     private Date dataCriacao;
     private String observacao;
     private Date dataEntrega;
-    private BigDecimal valorFrete;
-    private BigDecimal valorDesconto;
-    private BigDecimal valorTotal;
+    private float valorFrete;
+    private float valorDesconto;
+    private float valorTotal;
     private Cliente cliente;
     private EnderecoEntrega enderecoEntrega;
     private Usuario vendedor;
@@ -82,29 +81,29 @@ public class Pedido implements Serializable {
     }
     @NotNull
     @Column(name = "valor_frete")
-    public BigDecimal getValorFrete() {
+    public float getValorFrete() {
         return valorFrete;
     }
 
-    public void setValorFrete(BigDecimal valorFrete) {
+    public void setValorFrete(float valorFrete) {
         this.valorFrete = valorFrete;
     }
     @NotNull
     @Column(name = "valor_desconto", nullable = false)
-    public BigDecimal getValorDesconto() {
+    public float getValorDesconto() {
         return valorDesconto;
     }
 
-    public void setValorDesconto(BigDecimal valorDesconto) {
+    public void setValorDesconto(float valorDesconto) {
         this.valorDesconto = valorDesconto;
     }
     @NotNull
-    @Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
-    public BigDecimal getValorTotal() {
+    @Column(name = "valor_total", nullable = false)
+    public float getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(BigDecimal valorTotal) {
+    public void setValorTotal(float valorTotal) {
         this.valorTotal = valorTotal;
     }
     @NotNull
@@ -205,5 +204,12 @@ public class Pedido implements Serializable {
     public void setItensPedido(List<ItemPedido> itensPedido) {
         this.itensPedido = itensPedido;
     }
+
+    @Override
+    public String toString() {
+        return id.toString();
+    }
+    
+    
 
 }

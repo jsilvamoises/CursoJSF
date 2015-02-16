@@ -5,9 +5,8 @@
  */
 package conversores;
 
-import bean.Interesse;
+import bean.OldCategoria;
 import bean.PerfilUsuarioBean;
-import bean.SelectOneListBox;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -23,7 +22,7 @@ public class InteresseConverter  implements Converter{
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         if(value!=null){
-            for(Interesse interesse:PerfilUsuarioBean.INTERESSES){
+            for(OldCategoria interesse:PerfilUsuarioBean.INTERESSES){
                 if(value.equals(interesse.getDescricao())){
                     return interesse;
                 }
@@ -35,7 +34,7 @@ public class InteresseConverter  implements Converter{
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object value) {
         if(value!=null && !value.equals("")){
-          Interesse interesse = (Interesse)value;
+          OldCategoria interesse = (OldCategoria)value;
           return interesse.getDescricao();
         }
         return null;

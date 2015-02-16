@@ -8,10 +8,10 @@
     <context-param>
         <param-name>primefaces.THEME</param-name>
         <!--<param-value>eggplant</param-value>-->  
-        <param-value>start</param-value>
+        <!--<param-value>#{configuracoesForm.tema}</param-value>-->
         <!--<param-value>afterwork</param-value>--> 
         <!--<param-value>bootstrap</param-value>-->     
-        <!--<param-value>flick</param-value>-->
+        <param-value>flick</param-value>
          <!--<param-value>south-street</param-value>-->
     </context-param>
     <servlet>

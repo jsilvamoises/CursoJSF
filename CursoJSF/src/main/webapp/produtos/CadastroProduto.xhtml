@@ -13,6 +13,7 @@
 
     <ui:define name="content">
         <f:metadata>
+            <f:param name="dummy"/>
             <f:event listener="#{produtoBean.init()}" type="preRenderView"/>
         </f:metadata>
         <p:growl autoUpdate="true" life="3000"/>
@@ -30,8 +31,9 @@
                         <p:button value="Pesquisar" outcome="/produtos/ConsultaProduto" icon="ui-icon-search"/>
                     </p:toolbarGroup>
                 </p:toolbar>
-                
-                <p:panelGrid columns="2" style="margin-top: 20px; width: 100%" columnClasses="rotulo, campo">
+                 
+                <p:panelGrid id="grid" columns="2" style="margin-top: 20px; width: 100%" columnClasses="rotulo, campo">
+                   
                     <p:outputLabel value="SKU" for="sku"/>
                     <p:inputText id="sku" value="#{produtoBean.produto.sku}"/>
                     
@@ -39,14 +41,16 @@
                     <p:inputText id="nome" size="50" value="#{produtoBean.produto.nome}" maxlength="80"/>
                     
                     <p:outputLabel value="Categoria" for="categoria"/>
-                    <p:selectOneMenu id="categoria">
-                        <f:selectItem itemLabel="Selecione"/>
-                        <f:selectItems value="#{produtoBean.categorias}" var="categoria" itemValue="#{categoria}" itemLabel="#{categoria.descricao}"/>
+                    <p:selectOneMenu id="categoria" value="#{produtoBean.categoriaPai}"  converter="catcon" filter="true" >
+                        <f:selectItem itemLabel="Selecione"/>                         
+                        <f:selectItems value="#{produtoBean.categorias}" var="categoria"  itemValue="#{categoria}" itemLabel="#{categoria.descricao}"/>
+                        <p:ajax listener="#{produtoBean.listarSubcategorias}" update="subCategoria"/>
                     </p:selectOneMenu>
                     
-                    <p:outputLabel value="Sub categoria" for="subCategoria"/>
-                    <p:selectOneMenu id="subCategoria">
-                        <f:selectItem itemLabel="Selecione"/>
+                    <p:outputLabel id="sc" value="Sub categoria" for="subCategoria"  />
+                    <p:selectOneMenu id="subCategoria" value="#{produtoBean.produto.categoria}" converter="catcon"  filter="true" >
+                        <f:selectItem itemLabel="Selecione a subcategoria"/>
+                        <f:selectItems value="#{produtoBean.subCategorias}" var="subcategoria" itemValue="#{subcategoria}" itemLabel="#{subcategoria.descricao}" />
                     </p:selectOneMenu>
                     
                     <p:outputLabel value="Valor Unitário" for="vlrUnitario" />

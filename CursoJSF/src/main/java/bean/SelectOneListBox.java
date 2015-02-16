@@ -24,13 +24,13 @@ public class SelectOneListBox implements Serializable{
     
    private String profissao;
    private String nome;
-   private Interesse interesse;
-   public static final List<Interesse> INTERESSES = new ArrayList<>();
+   private OldCategoria interesse;
+   public static final List<OldCategoria> INTERESSES = new ArrayList<>();
    static {
-       INTERESSES.add(new Interesse("Esportes", "disk-icon-16"));
-       INTERESSES.add(new Interesse("Computaçao", "disk-icon-16"));
-       INTERESSES.add(new Interesse("Tecnologia", "disk-icon-16"));
-       INTERESSES.add(new Interesse("Corrida", "disk-icon-16"));
+       INTERESSES.add(new OldCategoria("Esportes", "disk-icon-16"));
+       INTERESSES.add(new OldCategoria("Computaçao", "disk-icon-16"));
+       INTERESSES.add(new OldCategoria("Tecnologia", "disk-icon-16"));
+       INTERESSES.add(new OldCategoria("Corrida", "disk-icon-16"));
    }
    public void atualizar(){
        System.out.println("Profissão.: " + this.profissao);
@@ -54,16 +54,16 @@ public class SelectOneListBox implements Serializable{
         this.nome = nome;
     }
 
-    public Interesse getInteresse() {
+    public OldCategoria getInteresse() {
         return interesse;
     }
 
-    public void setInteresse(Interesse interesse) {
+    public void setInteresse(OldCategoria interesse) {
         this.interesse = interesse;
     }
     
     
-    public List<Interesse> getInteresses(){
+    public List<OldCategoria> getInteresses(){
         return INTERESSES;
     }
 

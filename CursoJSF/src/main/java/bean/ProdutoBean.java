@@ -5,42 +5,60 @@
  */
 package bean;
 
+import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import model.Categoria;
 import model.Produto;
+import repositoty.CategoriaRepository;
+import util.jsf.FacesUtil;
 
 /**
  *
  * @author Moises
  */
 @Named
-@RequestScoped
-public class ProdutoBean {
-    private Produto produto;
+@ViewScoped
+public class ProdutoBean implements Serializable {
+
     @Inject
-    private EntityManager manager;
+    private CategoriaRepository categoriaRepository;
+
+    private Produto produto;
+
+    private List<Categoria> categoriasRaizes;
     
-    private List<Categoria> categorias;
+    private List<Categoria> subCategorias;
+    private Categoria categoriaPai;
 
     public ProdutoBean() {
+       produto = new Produto();
+    }
+
+    public void init() {
+        if (FacesUtil.isNotPostback()) {
+            categoriasRaizes = categoriaRepository.getListCategorias();
+            System.err.println("Iniciando pesquisa");
+        }
+
+    }
+    
+    public void listarSubcategorias(){
+        subCategorias = categoriaRepository.getListsSubCategorias(categoriaPai);
+    }
+    
+    public void limpar(){
         produto = new Produto();
     }
-    
-    public void init(){
-        
-        categorias = manager.createQuery("SELECT C FROM Categoria C", Categoria.class).getResultList();
-       
-    }
-    
-    public void salvar(){
-        
+
+    public void salvar() {
+        System.out.println("" + categoriaPai.getDescricao());
     }
 
     public Produto getProduto() {
@@ -52,13 +70,31 @@ public class ProdutoBean {
     }
 
     public List<Categoria> getCategorias() {
-        return categorias;
+        return categoriasRaizes;
     }
 
     public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
+        this.categoriasRaizes = categorias;
     }
-    
-    
-    
+
+    public Categoria getCategoria() {
+        return categoriaPai;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoriaPai = categoria;
+    }
+
+    public Categoria getCategoriaPai() {
+        return categoriaPai;
+    }
+
+    public void setCategoriaPai(Categoria categoriaPai) {
+        this.categoriaPai = categoriaPai;
+    }
+
+    public List<Categoria> getSubCategorias() {
+        return subCategorias;
+    }
+
 }

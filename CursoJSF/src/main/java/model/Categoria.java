@@ -6,21 +6,29 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.faces.bean.ViewScoped;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Moises
  */
 @Entity
+@ViewScoped
 public class Categoria implements Serializable{
     private Long id;
     private String descricao;
-    
+    private Categoria categoriaPai;
+    private List<Categoria> subCategorias = new ArrayList<>();
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,10 +64,30 @@ public class Categoria implements Serializable{
             return false;
         }
         final Categoria other = (Categoria) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.id, other.id);
+    }
+
+//    @Override
+//    public String toString() {
+//        return id.toString();
+//        
+//    }
+
+    @Override
+    public String toString() {
+        return id.toString();
+    }
+    
+    
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "categoria_pai_id")
+    public Categoria getCategoriaPai() {
+        return categoriaPai;
+    }
+
+    public void setCategoriaPai(Categoria categoriaPai) {
+        this.categoriaPai = categoriaPai;
     }
     
     

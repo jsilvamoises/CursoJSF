@@ -24,7 +24,7 @@ public class PerfilUsuarioBean implements Serializable {
     private static final long serialVersionUID = 1L;
     private String profissao;
     private String nome;
-    private Interesse interesse;
+    private OldCategoria interesse;
     private String pais;
 
     private List<String> paises = new ArrayList<>();
@@ -142,13 +142,13 @@ public class PerfilUsuarioBean implements Serializable {
         return cidades;
     }
 
-    public static final List<Interesse> INTERESSES = new ArrayList<>();
+    public static final List<OldCategoria> INTERESSES = new ArrayList<>();
 
     static {
-        INTERESSES.add(new Interesse("Esportes", "disk-icon-16"));
-        INTERESSES.add(new Interesse("Computaçao", "disk-icon-16"));
-        INTERESSES.add(new Interesse("Tecnologia", "disk-icon-16"));
-        INTERESSES.add(new Interesse("Corrida", "disk-icon-16"));
+        INTERESSES.add(new OldCategoria("Esportes", "disk-icon-16"));
+        INTERESSES.add(new OldCategoria("Computaçao", "disk-icon-16"));
+        INTERESSES.add(new OldCategoria("Tecnologia", "disk-icon-16"));
+        INTERESSES.add(new OldCategoria("Corrida", "disk-icon-16"));
     }
 
     public void atualizar() {
@@ -156,7 +156,7 @@ public class PerfilUsuarioBean implements Serializable {
         System.out.println("Sexo.: " + this.sexo);
       // System.out.println("Estadp.: " + this.estado);
         // System.out.println("Cidade.: " + this.cidade);
-        //  System.out.println("Interesse.: " + this.interesse.getDescricao());
+        //  System.out.println("OldCategoria.: " + this.interesse.getDescricao());
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Perfil atualizado!!!"));
     }
 
@@ -176,15 +176,15 @@ public class PerfilUsuarioBean implements Serializable {
         this.nome = nome;
     }
 
-    public Interesse getInteresse() {
+    public OldCategoria getInteresse() {
         return interesse;
     }
 
-    public void setInteresse(Interesse interesse) {
+    public void setInteresse(OldCategoria interesse) {
         this.interesse = interesse;
     }
 
-    public List<Interesse> getInteresses() {
+    public List<OldCategoria> getInteresses() {
         return INTERESSES;
     }
 
